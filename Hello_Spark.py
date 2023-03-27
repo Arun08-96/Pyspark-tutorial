@@ -14,6 +14,7 @@ my_conf = get_spark_app_config()
 
 spark = SparkSession.builder.config(conf=my_conf).getOrCreate()
 
+### Loading dataframe
 survey_df = load_survey_df(spark,sys.argv[1])
 partition_df = survey_df.repartition(2)
 count_df = country_count(partition_df )
